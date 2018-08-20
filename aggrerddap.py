@@ -212,7 +212,7 @@ if __name__ == "__main__":
    parser = argparse.ArgumentParser()
    parser.add_argument("series",help="The timeseries identifier in erddap")
    parser.add_argument("startdate", help="Start date format YYYY-MM",  type=valid_date)
-   parser.add_argument("period", choices=['hourly','daily','monthly'])
+   parser.add_argument("period", choices=['minutely','hourly','daily','monthly'])
    parser.add_argument("--data_dir", help="Folder containing the netcdf files", default="/opt/aggrerddap/data")
    parser.add_argument("--dataset_dir", help="Folder containing the erdap dataset files", default="/opt/aggrerddap/config")
    parser.add_argument('constraints', nargs = '*', help = 'any constraints included in the query eg, "temp<=25"')

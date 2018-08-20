@@ -245,6 +245,7 @@ class sqlite3_table():
 
   def tuplify(self,o):
      mt = parse_iso_timestamp(o["time"])
+     o["minutely"] = mt.strftime("%Y-%m-%dT%H%M" )
      o["hourly"] = mt.strftime("%Y-%m-%dT%H" )
      o["daily"] = mt.strftime("%Y-%m-%d")
      o["weekly"] =  mt.strftime("%Y-%W")
@@ -267,7 +268,7 @@ class sqlite3_table():
        else: 
           varnames.append(v["lcname"])
 
-     for v in ["hourly","daily","weekly","monthly"]:
+     for v in ["minutely","hourly","daily","weekly","monthly"]:
        cols.append({"name": v, "type": "text", "key": False, "erddap_name": None})
 
      for s in ["latitude","longitude","time"]:
@@ -315,7 +316,7 @@ class sqlite3_table():
      keys = [o["name"] for o in filtered(self.columns,{"key": True})]
      skip = [k for k in keys]
      skip.extend([o["name"] for o in filtered(self.columns,{"quality": True})])
-     skip.extend(["hourly","daily","weekly","monthly","time"])
+     skip.extend(["minutely","hourly","daily","weekly","monthly","time"])
      axis = [o["name"] for o in filtered(self.columns,{"axis": True}) if o["name"] not in skip ]
      skip.extend(axis)
 
