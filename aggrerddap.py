@@ -96,6 +96,8 @@ def aggregate(ts,min_date,period,data_dir,dataset_dir,constraints):
              conn.commit()
     if len(batch):
        c.executemany(query,batch)
+    if i == 0:
+       return;
     primary_keys = ','.join([o["name"] for o in filtered(sqlite.columns,{"key": True})])
     sqlidx = "create index idx_{0}_{1} on {0}({2},{1})".format(sqlite.table_name,period,primary_keys);
     c.execute(sqlidx);
