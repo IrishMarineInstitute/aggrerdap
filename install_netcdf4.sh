@@ -5,7 +5,7 @@ BASHRC="~/.bashrc"
 apt-get -y install g++ gfortran libtool automake autoconf m4 bison flex libcurl4-openssl-dev zlib1g-dev git wget curl libjpeg-dev cmake python cython python-numpy gdb dos2unix antlr libantlr-dev libexpat1-dev libxml2-dev gsl-bin libgsl0-dev udunits-bin libudunits2-0 libudunits2-dev clang zip
 
 # Install HDF5
-v=1.8.18
+v=1.8.20
 # wget http://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4/hdf5-${v}.tar.gz || exit 1
 if [[ ! -f hdf5-${v}.tar.gz ]]; then
   wget https://support.hdfgroup.org/ftp/HDF5/current18/src/hdf5-${v}.tar.gz || exit 1
